@@ -6,20 +6,22 @@ public class App {
     public static void main(String[] args) {
         Boolean endFlag = true;
         // 반복 실행을 멈추기위한 flag
+        double[] resultArr = new double[10];
+        int count = 0;
         while (endFlag) {
 
             Scanner sc = new Scanner(System.in);
 
             System.out.print("첫 번째 숫자를 입력하세요: ");
-            int num1 = sc.nextInt();
+            double num1 = (double)sc.nextInt();
             // sc 입력변수로 받은 int 타입의 수를 num1로 저장
 
             System.out.print("두 번째 숫자를 입력하세요: ");
-            int num2 = sc.nextInt();
+            double num2 = (double)sc.nextInt();
             // sc 입력변수로 받은 int 타입의 수를 num2로 저장
 
             char sign = ' ';
-            int result = 0;
+            double result = 0;
             Boolean flag = true;
             while (flag) {
                 System.out.print("사칙연산 기호를 입력하세요: ");
@@ -52,8 +54,17 @@ public class App {
             }
             if (num2 == 0 && sign == '/') {
                 System.out.print("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다. \n\n");
+            } else if (count == 10) {
+                for (int i = 0; i < count - 1; i++) { // 10개의 배열
+                    resultArr[i] = resultArr[i + 1]; // 인덱스 위치 한 칸씩 왼쪽 덮어쓰기
+                }
+                resultArr[count - 1] = result; // 마지막 인덱스는 마지막 결과 값
+                System.out.print("num1 " + sign + " num2 = " + result + "\n\n"); // 결과값 출력
+
             } else {
                 System.out.print("num1 " + sign + " num2 = " + result + "\n\n"); // 결과값 출력
+                resultArr[count] = result;
+                count++;
             }
 
             System.out.print("더 계산하시려면 아무 값이나 입력하세요. (exit 입력 시 종료)");
@@ -65,5 +76,6 @@ public class App {
                 endFlag = false; // 전체 반복 해제
             }
         }
+        System.out.println(Arrays.toString(resultArr));
     }
 }
