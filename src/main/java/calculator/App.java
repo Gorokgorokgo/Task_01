@@ -59,9 +59,16 @@ public class App {
                 resultStack.push(result); // Stack에 result 값 저장
 
                 System.out.print("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제)");
-                String remove = sc.next(); // scanner로 받아온 sc 값중 한 단어만 remove 변수로 문자열 저장
-                if (remove.equalsIgnoreCase("remove")) {
+                String text = sc.next(); // scanner로 받아온 sc 값중 한 단어만 remove 변수로 문자열 저장
+                if (text.equalsIgnoreCase("remove")) {
                     resultStack.pop();
+                }
+                System.out.print("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회)");
+                text = sc.next();
+                if (text.equalsIgnoreCase("inquiry")) {
+                    for (double a : resultStack) {
+                        System.out.println(a);
+                    }
                 }
             }
 
@@ -72,9 +79,5 @@ public class App {
                 endFlag = false; // 전체 반복 해제
             }
         }
-        while(!resultStack.isEmpty()) {
-            System.out.print(resultStack.pop() + " "); // 결과 값 체크
-        }
-        // System.out.println(Arrays.toString(resultArr)); // 결과 값 체크
     }
 }
