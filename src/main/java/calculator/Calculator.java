@@ -33,7 +33,7 @@ public class Calculator {
     public static void main(String[] args) {
         Calculator ksk = new Calculator();
         double result = ksk.calculate(5, 3, '/');
-        System.out.println(result);
+
 
 
     }
