@@ -50,7 +50,7 @@ public class App {
                     default -> System.out.print("사칙연산 기호만을 작성해주세요.\n\n");
                 }
             }
-            if (num2 == 0) {
+            if (num2 == 0 && sign == '/') {
                 System.out.print("나눗셈 연산에서 분모(두번째 정수)에 0이 입력될 수 없습니다. \n\n");
             } else {
                 System.out.print("num1 " + sign + " num2 = " + result + "\n\n"); // 결과값 출력
